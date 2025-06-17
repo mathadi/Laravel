@@ -44,7 +44,7 @@ class UserController extends Controller
     {
         // On récupère l'utilisateur connecté.
         $user = Auth::user();
-        $articles = Article::where('user_id', $user->id)->get();
+        $articles = Article::where('user_id', $user->id)->orderBy('updated_at', 'DESC')->get();
 
         // On retourne la vue.
         return view('dashboard', [
