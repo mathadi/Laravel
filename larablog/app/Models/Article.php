@@ -41,7 +41,8 @@ class Article extends Model
 		'user_id',
 		'title',
 		'content',
-		'draft'
+		'draft',
+		'image'
 	];
 	
 	public function user()

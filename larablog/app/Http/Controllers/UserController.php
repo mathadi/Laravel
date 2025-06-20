@@ -16,7 +16,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // On récupère les données du formulaire
-        $data = $request->only(['title', 'content', 'draft']);
+        $data = $request->only(['title', 'content', 'draft', 'image']);
 
         // Créateur de l'article (auteur)
         $data['user_id'] = Auth::user()->id;
@@ -71,7 +71,7 @@ class UserController extends Controller
         }
 
         // On récupère les données du formulaire
-        $data = $request->only(['title', 'content', 'draft']);
+        $data = $request->only(['title', 'content', 'draft', 'image']);
 
         // Gestion du draft
         $data['draft'] = isset($data['draft']) ? 1 : 0;

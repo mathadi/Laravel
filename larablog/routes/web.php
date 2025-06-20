@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +24,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/articles/{article}/update', [UserController::class, 'update'])->name('articles.update');
     Route::get('/articles/{article}/remove', [UserController::class, 'remove'])->name('articles.remove');
 });
-// Route::get('/{user}', [PublicController::class, 'index'])->name('public.index');
+Route::get('/{user}', [PublicController::class, 'index'])->name('public.index');
 Route::get('/{user}/{article}', [PublicController::class, 'show'])->name('public.show');
-require __DIR__ . '/auth.php';

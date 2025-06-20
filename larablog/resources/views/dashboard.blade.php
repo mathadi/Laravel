@@ -38,8 +38,8 @@
     @endif
     <!-- Articles -->
     @foreach ($articles as $article)
-        <div class="bg-white overflow-hidden shadow-sm rounded-lg mt-4 mx-auto w-[60em] pl-6 flex justify-between h-[10em]">
-            <div class="w-[80%] pt-5">
+        <div class="bg-white overflow-hidden shadow-sm rounded-lg mt-4 mx-auto w-[60em] pl-6 flex justify-between h-[15em]">
+            <div class="w-[70%] pt-5">
                 <div class="pb-6 text-gray-900">
                     <h2 class="text-2xl font-bold">{{ $article->title }}</h2>
                     <p class="text-gray-700">{{ substr($article->content, 0, 35) }}...</p>
@@ -51,9 +51,9 @@
                         class="relative bottom-1 mr-3 bg-red-500 hover:bg-red-700 rounded-lg p-2 text-white">Supprimer</a>
                 </div>
             </div>
-            <div class="border">
+            <div class="border w-[30%]">
                 <figure>
-                    <img src="{{$article->picture}}" alt="image de l'article" />
+                    <img src="{{ $article->image }}" alt="image de l'article" />
                 </figure>
             </div>
         </div>

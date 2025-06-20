@@ -5,28 +5,38 @@
         </h2>
     </x-slot>
 
-    <form method="post" action="{{ route('articles.store') }}" class="py-12">
+    <form method="post" action="{{ route('articles.store') }}" enctype="multipart/form-data" class="py-12">
         @csrf
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 ">
-                   <!-- Input de titre de l'article -->
-                   <input type="text" name="title" id="title" placeholder="Titre de l'article" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <!-- Input de titre de l'article -->
+                    <input type="text" name="title" id="title" placeholder="Titre de l'article"
+                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 </div>
 
                 <div class="p-6 pt-0 text-gray-900 ">
-                   <!-- Contenu de l'article -->
-                   <textarea rows="10" name="content" id="content" placeholder="Contenu de l'article" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                    <!-- Contenu de l'article -->
+                    <textarea rows="10" name="content" id="content" placeholder="Contenu de l'article"
+                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                </div>
+
+                {{-- Image de l'article --}}
+                <div>
+                    <label for="image" class="block font-semibold">Image</label>
+                    <input type="file" name="image" id="image" class="w-full border rounded p-2">
                 </div>
 
                 <div class="p-6 text-gray-900 flex items-center">
                     <!-- Action sur le formulaire -->
                     <div class="grow">
-                        <input type="checkbox" name="draft" id="draft" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <input type="checkbox" name="draft" id="draft"
+                            class="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         <label for="draft">Article en brouillon</label>
                     </div>
                     <div>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <button type="submit"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             Créer l'article
                         </button>
                     </div>

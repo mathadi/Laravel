@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <form method="post" action="{{ route('articles.update', $article->id) }}" class="py-12">
+    <form enctype="multipart/form-data" method="post" action="{{ route('articles.update', $article->id) }}" class="py-12">
         @csrf
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm rounded-lg">
@@ -20,6 +20,12 @@
                     <!-- Contenu de l'article -->
                     <textarea rows="10" name="content" id="content" placeholder="Contenu de l'article"
                         class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{ $article->content }}</textarea>
+                </div>
+
+                {{-- Image de l'article --}}
+                <div>
+                    <label for="image" class="block font-semibold">Image</label>
+                    <input type="file" name="image" id="image" class="w-full border rounded p-2">
                 </div>
 
                 <div class="p-6 text-gray-900 flex items-center">
