@@ -15,6 +15,18 @@
                         class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 </div>
 
+                {{-- Sélection des catégories --}}
+                <div class="p-6 pt-0 text-gray-900">
+                    <label for="categories" class="block font-semibold mb-2">Catégories</label>
+                    <select name="categories[]" id="categories" multiple
+                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                    <p class="text-sm text-gray-500 mt-1">Maintenez Ctrl pour sélectionner plusieurs catégories.</p>
+                </div>
+
                 <div class="p-6 pt-0 text-gray-900 ">
                     <!-- Contenu de l'article -->
                     <textarea rows="10" name="content" id="content" placeholder="Contenu de l'article"

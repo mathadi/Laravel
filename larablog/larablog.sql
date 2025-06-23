@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 20 juin 2025 à 17:23
+-- Généré le : lun. 23 juin 2025 à 17:40
 -- Version du serveur : 8.0.13
 -- Version de PHP : 8.3.16
 
@@ -47,7 +47,12 @@ INSERT INTO `articles` (`id`, `user_id`, `title`, `content`, `draft`, `created_a
 (8, 1, 'tydgt', 'tteu', 0, '2025-06-16 14:03:31', '2025-06-16 14:03:31', NULL),
 (10, 2, 'comment comprendre parfaitement Laravel 12 ?', 'Pour comprendre parfaitement Laravel 12, il faut lire la documentation.', 0, '2025-06-17 11:25:32', '2025-06-17 11:25:32', NULL),
 (11, 2, 'Vuejs vs React : lequel est le meilleur ?', 'Lequel est le meilleur entre vue js et react ? C\'est simple, utilise les deux et tu sauras.', 0, '2025-06-17 11:27:17', '2025-06-20 12:14:40', 'C:\\Users\\Mathieu.Adimi\\AppData\\Local\\Temp\\php6D3B.tmp'),
-(12, 2, 'Comment créer un article avec une image ?', 'Ceci est un article qui contient une image qui a été uploadé', 0, '2025-06-20 12:16:21', '2025-06-20 12:16:21', 'C:\\Users\\Mathieu.Adimi\\AppData\\Local\\Temp\\phpF64D.tmp');
+(12, 2, 'Comment créer un article avec une image ?', 'Ceci est un article qui contient une image qui a été uploadé', 0, '2025-06-20 12:16:21', '2025-06-20 12:16:21', 'C:\\Users\\Mathieu.Adimi\\AppData\\Local\\Temp\\phpF64D.tmp'),
+(13, 2, 'C\'est quoi un framework ?', 'Un framework c\'est un outil de développement informatique qui permet de créer des sites web avec la plus grande facilité qui soit.', 0, '2025-06-23 09:53:25', '2025-06-23 09:53:25', NULL),
+(14, 2, 'titre de mon nouvel article', 'contenu de mon nouvel article', 0, '2025-06-23 11:16:22', '2025-06-23 11:16:22', NULL),
+(15, 2, 'wsfwsf', 'dwxfrrwsdfr', 0, '2025-06-23 11:30:41', '2025-06-23 11:30:41', 'C:\\Users\\Mathieu.Adimi\\AppData\\Local\\Temp\\phpE2A.tmp'),
+(16, 2, 'jerry', 'noumonvi', 0, '2025-06-23 11:37:39', '2025-06-23 11:37:39', NULL),
+(17, 2, 'trytryet', 'dfghgfhgfh', 0, '2025-06-23 11:51:46', '2025-06-23 11:51:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -59,6 +64,18 @@ CREATE TABLE `article_category` (
   `article_id` bigint(20) DEFAULT NULL,
   `category_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `article_category`
+--
+
+INSERT INTO `article_category` (`article_id`, `category_id`) VALUES
+(13, 2),
+(14, 4),
+(16, 4),
+(17, 1),
+(17, 2),
+(17, 3);
 
 -- --------------------------------------------------------
 
@@ -260,7 +277,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('raDxVnTXl8iLXsPnvFfnLfk7q912IHAuezH7gFW7', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiVmkyeWxjcVpLcUFndEhPZlhycEZmUXFzRThoOWxVTDhmeXE1QnltRSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9kYXNoYm9hcmQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO3M6MjI6IlBIUERFQlVHQkFSX1NUQUNLX0RBVEEiO2E6MDp7fX0=', 1750439132);
+('AISnGIUEKzNKgqtdWQAG5oeNOYFCmr9k7KgvdNBJ', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicEJ2cUlLNVIwS3p0VXlVSUtHYzdPUXFIWXBkV1EyNHF3QkhhVFFGcCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9kYXNoYm9hcmQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO3M6MjI6IlBIUERFQlVHQkFSX1NUQUNLX0RBVEEiO2E6MDp7fX0=', 1750688023);
 
 -- --------------------------------------------------------
 
@@ -298,7 +315,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'mathieu', 'mthadimi@email.com', NULL, '$2y$12$9OD5Rgh3mDaGZ4NofcdG2.39.G0e5Pq8ABYxfq0JSZzmsW7lPhXs2', 'wq1PnV7i3atTonJ7eMPRgbDwHz5HUHV1tIfvdCNV5DU7dnYrmnzBc6z063fx', '2025-06-13 08:46:23', '2025-06-13 08:46:23'),
-(2, 'mathadi', 'mathieu@gmail.com', NULL, '$2y$12$tgyD4Wzl6fpHANEV4VeuSeBerg4BhxAgfQBRQQKwAryh0bsBUcHcm', 'LSL7TXHjvoEzhGBowcIAlzhXoTC9u1CME1Cb9AADzH7fJIEbZ9X1QG6Je325', '2025-06-17 11:24:05', '2025-06-17 11:24:05');
+(2, 'mathadi', 'mathieu@gmail.com', NULL, '$2y$12$tgyD4Wzl6fpHANEV4VeuSeBerg4BhxAgfQBRQQKwAryh0bsBUcHcm', 'G3212DmqdWHrBok89wfkUbEGDlXwb2AC5GFbT7eEm2EYddOn890QrDKHHjmr', '2025-06-17 11:24:05', '2025-06-17 11:24:05');
 
 --
 -- Index pour les tables déchargées
@@ -412,7 +429,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `categories`

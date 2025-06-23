@@ -44,6 +44,14 @@
                     <h2 class="text-2xl font-bold">{{ $article->title }}</h2>
                     <p class="text-gray-700">{{ substr($article->content, 0, 35) }}...</p>
                 </div>
+
+                {{-- Affichage de la catégorie --}}
+                @foreach ($article->categories as $category)
+                    <span class="inline-block bg-amber-100 text-amber-800 text-xs font-semibold px-3 py-1 rounded-full mr-1 mb-2">
+                        {{ $category->name ?: 'Aucune' }}
+                    </span>
+                @endforeach
+
                 <div class="relative top-5">
                     <a href="{{ route('articles.edit', $article->id) }}"
                         class="relative bottom-1 mr-3 bg-blue-500 hover:bg-blue-700 rounded-lg p-2 text-white">Modifier</a>

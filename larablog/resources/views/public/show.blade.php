@@ -5,6 +5,13 @@
         </h2>
     </div>
 
+     {{-- Affichage de la catégorie --}}
+    <div class="text-gray-500 text-sm mb-2 text-center">
+        Catégorie : {{ $article->categories->name ?? 'Aucune' }}
+        {{-- Si plusieurs catégories : --}}
+        {{-- Catégories : {{ $article->categories->pluck('name')->join(', ') ?: 'Aucune' }} --}}
+    </div>
+
     <div class="text-gray-500 text-sm">
         Publié le {{ $article->created_at->format('d/m/Y') }} par <a
             href="{{ route('public.index', $article->user->id) }}">{{ $article->user->name }}</a>
