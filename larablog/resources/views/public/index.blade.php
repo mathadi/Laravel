@@ -16,7 +16,7 @@
                     <p class="text-sm text-gray-500 mb-2">
                         {{-- Catégorie : {{ $article->categories->name ?? 'Aucune' }}  --}}
                         {{-- Si un article peut avoir plusieurs catégories --}}
-                        Catégories : {{ $article->categories->pluck('name')->join(', ') ?: 'Aucune' }}                        Catégories : {{ $article->categories->pluck('name')->join(', ') ?: 'Aucune' }}
+                        Catégories : {{ $article->categories->pluck('name')->join(', ') ?: 'Aucune' }}
                     </p>
 
                     <p class="text-gray-700 dark:text-gray-300">{{ substr($article->content, 0, 30) }}...</p>

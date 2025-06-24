@@ -95,4 +95,16 @@ class UserController extends Controller
         $article->delete();
         return redirect()->route('dashboard')->with('success', 'Article supprimé !');
     }
+
+    public function like(Article $article)
+    {
+        // On vérifie que l'utilisateur est bien le créateur de l'article
+        if ($article->user_id === Auth::user()->id) {
+            abort(403);
+        }
+
+        // On incrémente le nombre de likes
+        $article->increment('likes');
+
+    }
 }
