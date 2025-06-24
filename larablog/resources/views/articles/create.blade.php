@@ -34,7 +34,7 @@
                 </div>
 
                 {{-- Image de l'article --}}
-                <div>
+                <div class="p-6 pt-0 text-gray-900">
                     <label for="image" class="block font-semibold">Image</label>
                     <input type="file" name="image" id="image" class="w-full border rounded p-2">
                 </div>

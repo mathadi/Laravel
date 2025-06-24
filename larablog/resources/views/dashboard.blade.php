@@ -16,21 +16,26 @@
     </div>
     <!-- Message flash -->
     @if (session('success'))
-        {{-- <div class="bg-green-500 text-white p-4 rounded-lg mt-6 mb-6 text-center mx-2"> --}}
-            {{-- {{ session('success') }} --}}
-            {{-- </div> --}}
-        <div>
+        {{-- <div class="bg-green-500 text-white p-4 rounded-lg mt-6 mb-6 text-center mx-2">
+            {{ session('success') }}
+        </div> --}}
+        {{-- <div> --}}
             <script>
                 Swal.fire({
+                    toast: true,
+                    position: 'top',
                     icon: 'success',
-                    title: 'Succès',
-                    // text: '{{ session('success') }}',
+                    title: "{{ session('success') }}",
+                    showConfirmButton: false,
+                    // text: {{ session('success') }},
                     timer: 3000,
-                    showConfirmButton: false
+                    timerProgressBar: true
                 });
             </script>
-        </div>
+            {{--
+        </div> --}}
     @endif
+
     @if (session('error'))
         <div class="bg-red-500 text-white p-4 rounded-lg mt-6 mb-6 text-center mx-2">
             {{ session('error') }}
@@ -46,11 +51,16 @@
                 </div>
 
                 {{-- Affichage de la catégorie --}}
-                @foreach ($article->categories as $category)
-                    <span class="inline-block bg-amber-100 text-amber-800 text-xs font-semibold px-3 py-1 rounded-full mr-1 mb-2">
-                        {{ $category->name ?: 'Aucune' }}
+                @forelse ($article->categories as $category)
+                    <span
+                        class="inline-block bg-amber-100 text-amber-800 text-xs font-semibold px-3 py-1 rounded-full mr-1 mb-2">
+                        {{ $category->name }}
                     </span>
-                @endforeach
+                @empty
+                    <span
+                        class="inline-block bg-amber-100 text-amber-800 text-xs font-semibold px-3 py-1 rounded-full mr-1 mb-2">Aucune
+                        catégorie</span>
+                @endforelse
 
                 <div class="relative top-5">
                     <a href="{{ route('articles.edit', $article->id) }}"
@@ -61,7 +71,10 @@
             </div>
             <div class="border w-[30%]">
                 <figure>
-                    <img src="{{ $article->image }}" alt="image de l'article" />
+                    @if ($article->image)
+                        <img src="{{ asset('storage/' . $article->image) }}" alt="image de l'article"
+                            class="w-full h-full object-cover rounded-lg" />
+                    @endif
                 </figure>
             </div>
         </div>

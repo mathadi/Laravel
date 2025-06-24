@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use SweetAlert;
 
 class UserController extends Controller
 {
@@ -24,11 +25,14 @@ class UserController extends Controller
         // Créateur de l'article (auteur)
         $data['user_id'] = Auth::user()->id;
 
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('articles', 'public');
+        }
         // Gestion du draft
         $data['draft'] = isset($data['draft']) ? 1 : 0;
 
         // On crée l'article
-        $article = Article::create($data); // $Article est l'objet article nouvellement créé
+        $article = Article::create($data); // $article est l'objet article nouvellement créé
 
         // Exemple pour ajouter la catégorie 1 à l'article
         // $article->categories()->sync(1);
@@ -47,7 +51,7 @@ class UserController extends Controller
     {
         // On récupère l'utilisateur connecté.
         $user = Auth::user();
-        $articles = Article::where('user_id', $user->id)->orderBy('updated_at', 'DESC')->get();
+        $articles = Article::where('user_id', $user->id)->orderBy('id', 'DESC')->get();
 
         // On retourne la vue.
         return view('dashboard', [
@@ -56,7 +60,7 @@ class UserController extends Controller
     }
     public function edit(Article $article)
     {
-        
+
         // On vérifie que l'utilisateur est bien le créateur de l'article
         if ($article->user_id !== Auth::user()->id) {
             abort(403);
@@ -76,14 +80,21 @@ class UserController extends Controller
         // On récupère les données du formulaire
         $data = $request->only(['title', 'content', 'draft', 'image']);
 
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('articles', 'public');
+        }
+
         // Gestion du draft
         $data['draft'] = isset($data['draft']) ? 1 : 0;
 
         // On met à jour l'article
         $article->update($data);
 
+        // SweetAlert::success('Success Message', 'Optional Title');
         // On redirige l'utilisateur vers la liste des articles (avec un flash)
         return redirect()->route('dashboard')->with('success', 'Article mis à jour !');
+        // alert()->success('Basic Message', 'Mandatory Title')->autoclose(3500);
+        // redirect()->route('dashboard')->with('success', 'Article mis à jour !');
     }
 
     public function remove(Article $article)
@@ -98,13 +109,14 @@ class UserController extends Controller
 
     public function like(Article $article)
     {
-        // On vérifie que l'utilisateur est bien le créateur de l'article
-        if ($article->user_id === Auth::user()->id) {
-            abort(403);
-        }
+        // On vérifie que l'utilisateur n'est pas le créateur de l'article
+        // if ($article->user_id === Auth::user()->id) {
+        //     abort(403);
+        // }
 
         // On incrémente le nombre de likes
         $article->increment('likes');
 
+        return redirect()->back();
     }
 }
