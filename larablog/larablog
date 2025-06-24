@@ -1,0 +1,121 @@
+-- --------------------------------------------------------
+-- Hôte :                        localhost
+-- Version du serveur:           5.7.24 - MySQL Community Server (GPL)
+-- SE du serveur:                Win64
+-- HeidiSQL Version:             10.2.0.5599
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- Listage des données de la table larablog.articles : ~10 rows (environ)
+/*!40000 ALTER TABLE `articles` DISABLE KEYS */;
+INSERT INTO `articles` (`id`, `user_id`, `title`, `content`, `draft`, `created_at`, `updated_at`, `image`, `likes`) VALUES
+	(7, 1, 'new title', 'new content', 0, '2025-06-16 14:00:30', '2025-06-16 14:00:30', NULL, 0),
+	(8, 1, 'tydgt', 'tteu', 0, '2025-06-16 14:03:31', '2025-06-16 14:03:31', NULL, 0),
+	(10, 2, 'comment comprendre parfaitement Laravel 12 ?', 'Pour comprendre parfaitement Laravel 12, il faut lire la documentation.', 0, '2025-06-17 11:25:32', '2025-06-17 11:25:32', NULL, 0),
+	(11, 2, 'Vuejs vs React : lequel est le meilleur ?', 'Lequel est le meilleur entre vue js et react ? C\'est simple, utilise les deux et tu sauras.', 0, '2025-06-17 11:27:17', '2025-06-20 12:14:40', 'C:\\Users\\Mathieu.Adimi\\AppData\\Local\\Temp\\php6D3B.tmp', 0),
+	(12, 2, 'Comment créer un article avec une image ?', 'Ceci est un article qui contient une image qui a été uploadé', 0, '2025-06-20 12:16:21', '2025-06-20 12:16:21', 'C:\\Users\\Mathieu.Adimi\\AppData\\Local\\Temp\\phpF64D.tmp', 0),
+	(13, 2, 'C\'est quoi un framework ?', 'Un framework c\'est un outil de développement informatique qui permet de créer des sites web avec la plus grande facilité qui soit.', 0, '2025-06-23 09:53:25', '2025-06-23 09:53:25', NULL, 0),
+	(14, 2, 'titre de mon nouvel article', 'contenu de mon nouvel article', 0, '2025-06-23 11:16:22', '2025-06-23 11:16:22', NULL, 0),
+	(15, 2, 'wsfwsf', 'dwxfrrwsdfr', 0, '2025-06-23 11:30:41', '2025-06-23 11:30:41', 'C:\\Users\\Mathieu.Adimi\\AppData\\Local\\Temp\\phpE2A.tmp', 0),
+	(16, 2, 'jerry', 'noumonvi', 0, '2025-06-23 11:37:39', '2025-06-23 11:37:39', NULL, 0),
+	(17, 2, 'trytryet', 'dfghgfhgfh', 0, '2025-06-23 11:51:46', '2025-06-23 11:51:46', NULL, 0);
+/*!40000 ALTER TABLE `articles` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.article_category : ~6 rows (environ)
+/*!40000 ALTER TABLE `article_category` DISABLE KEYS */;
+INSERT INTO `article_category` (`article_id`, `category_id`) VALUES
+	(13, 2),
+	(14, 4),
+	(16, 4),
+	(17, 1),
+	(17, 2),
+	(17, 3);
+/*!40000 ALTER TABLE `article_category` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.article_tag : ~0 rows (environ)
+/*!40000 ALTER TABLE `article_tag` DISABLE KEYS */;
+/*!40000 ALTER TABLE `article_tag` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.cache : ~4 rows (environ)
+/*!40000 ALTER TABLE `cache` DISABLE KEYS */;
+INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
+	('larablog_cache_mathieu@email.com|127.0.0.1', 'i:1;', 1750419277),
+	('larablog_cache_mathieu@email.com|127.0.0.1:timer', 'i:1750419277;', 1750419277),
+	('laravel_cache_mathieu@email.com|127.0.0.1', 'i:2;', 1749811780),
+	('laravel_cache_mathieu@email.com|127.0.0.1:timer', 'i:1749811780;', 1749811780);
+/*!40000 ALTER TABLE `cache` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.cache_locks : ~0 rows (environ)
+/*!40000 ALTER TABLE `cache_locks` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cache_locks` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.categories : ~7 rows (environ)
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
+	(1, 'Technologie', '2025-06-20 17:13:02', '2025-06-20 17:13:02'),
+	(2, 'Informatique', '2025-06-20 17:13:02', '2025-06-20 17:13:02'),
+	(3, 'IA', '2025-06-20 17:13:02', '2025-06-20 17:13:02'),
+	(4, 'Sport', '2025-06-20 17:13:02', '2025-06-20 17:13:02'),
+	(5, 'Musique', '2025-06-20 17:13:02', '2025-06-20 17:13:02'),
+	(6, 'Cinéma', '2025-06-20 17:14:19', '2025-06-20 17:14:19'),
+	(7, 'Jeux vidéo\r\n', '2025-06-20 17:14:19', '2025-06-20 17:14:19');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.comments : ~3 rows (environ)
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` (`id`, `user_id`, `article_id`, `content`, `created_at`, `updated_at`) VALUES
+	(1, 2, 11, 'un commentaire', '2025-06-20 14:39:40', '2025-06-20 14:39:40'),
+	(2, 2, 11, 'ah bon inh d\'utiliser les deux, d\'accord', '2025-06-20 14:42:38', '2025-06-20 14:42:38'),
+	(3, 2, 10, 'documentation que quand on lit, on ne comprend pas là', '2025-06-20 15:04:55', '2025-06-20 15:04:55');
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.failed_jobs : ~0 rows (environ)
+/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.jobs : ~0 rows (environ)
+/*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.job_batches : ~0 rows (environ)
+/*!40000 ALTER TABLE `job_batches` DISABLE KEYS */;
+/*!40000 ALTER TABLE `job_batches` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.migrations : ~4 rows (environ)
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+	(1, '0001_01_01_000000_create_users_table', 1),
+	(2, '0001_01_01_000001_create_cache_table', 1),
+	(3, '0001_01_01_000002_create_jobs_table', 1),
+	(4, '2025_06_20_135126_add_image_to_articles_table', 2);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.password_reset_tokens : ~0 rows (environ)
+/*!40000 ALTER TABLE `password_reset_tokens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_reset_tokens` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.sessions : ~1 rows (environ)
+/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+	('rgX7diem7qIWlemq9HrgkyKdBvUyDx5TNf916ZXq', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiSVhNcXFJaUNrQkJJU2pSbFJBSGVMU2VGR0V6YVlpd2pIbFBWWXNNSSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC8yLzEwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1750727812);
+/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.tags : ~0 rows (environ)
+/*!40000 ALTER TABLE `tags` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tags` ENABLE KEYS */;
+
+-- Listage des données de la table larablog.users : ~2 rows (environ)
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+	(1, 'mathieu', 'mthadimi@email.com', NULL, '$2y$12$9OD5Rgh3mDaGZ4NofcdG2.39.G0e5Pq8ABYxfq0JSZzmsW7lPhXs2', 'wq1PnV7i3atTonJ7eMPRgbDwHz5HUHV1tIfvdCNV5DU7dnYrmnzBc6z063fx', '2025-06-13 08:46:23', '2025-06-13 08:46:23'),
+	(2, 'mathadi', 'mathieu@gmail.com', NULL, '$2y$12$tgyD4Wzl6fpHANEV4VeuSeBerg4BhxAgfQBRQQKwAryh0bsBUcHcm', 'G3212DmqdWHrBok89wfkUbEGDlXwb2AC5GFbT7eEm2EYddOn890QrDKHHjmr', '2025-06-17 11:24:05', '2025-06-17 11:24:05');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
