@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="text-center mb-8">
         <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
-            Liste des articles publiés de {{ $user->name }}
+    Liste des articles publiés de {{ $user->name }}
         </h2>
     </div>
 

@@ -27,5 +27,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/articles/{article}/like', [UserController::class, 'like'])->name('articles.like');
     Route::post('/comments/store', [CommentController::class, 'store'])->name('comments.store');
 });
-Route::get('/{user}', [PublicController::class, 'index'])->name('public.index');
+Route::get('/{user?}', [PublicController::class, 'index'])->name('public.index');
 Route::get('/{user}/{article}', [PublicController::class, 'show'])->name('public.show');

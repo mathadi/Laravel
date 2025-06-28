@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
+/* use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
@@ -56,4 +56,22 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
-});
+}); */
+
+
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SocialiteController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register.show');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login.show');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// La redirection vers le provider
+Route::get("redirect/google", [SocialiteController::class, 'redirect'])->name('socialite.redirect');
+
+// Le callback du provider
+Route::get("auth/callback/google", [SocialiteController::class, 'callback'])->name('socialite.callback');
