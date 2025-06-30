@@ -22,7 +22,7 @@ class SocialiteController extends Controller
     # redirection vers le provider
     public function redirect()
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('google')->stateless()->with(['prompt' => 'select_account'])->redirect();
         /* $provider = $request->provider;
 
         // On vérifie si le provider est autorisé

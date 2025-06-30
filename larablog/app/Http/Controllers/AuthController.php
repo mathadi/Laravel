@@ -56,6 +56,6 @@ class AuthController extends Controller
         $request->session()->invalidate(); // Invalide la session actuelle
         $request->session()->regenerateToken(); // Renouvelle le token CSRF
 
-        return redirect('/login')->with('success', 'Déconnexion réussie.');
+        return redirect()->route('login.show')->with('success', 'Déconnexion réussie.');
     }
 }
