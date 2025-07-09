@@ -5,14 +5,17 @@ use App\Models\Task;
 use Inertia\Inertia;
 
 use Illuminate\Http\Request;
+use App\Events\CreatedTaskEvent;
+use App\Events\DeletedTaskEvent;
+use App\Events\UpdatedTaskEvent;
 
 class TaskController extends Controller
 {
     // Affiche la liste des tâches
     public function index()
     {
-        $tasks = Task::orderByDesc('due_date', 'asc')->orderBy('created_at', 'desc')->get();
-        return Inertia::render('Tasks/Index', [
+        $tasks = Task::orderBy('due_date', 'asc')->orderBy('created_at', 'desc')->get();
+        return Inertia::render('Dashboard', [
             'tasks' => $tasks
         ]);
     }
@@ -35,7 +38,9 @@ class TaskController extends Controller
         ]);
         // ajoute l'utilisateur
         $validated['user_id'] = auth()->id();
-        Task::create($validated);
+        $newTask = Task::create($validated);
+
+        event(new CreatedTaskEvent($newTask));
         return redirect()->route('tasks.index')->with('success', 'Tâche créée avec succès.');
     }
 
@@ -79,7 +84,7 @@ class TaskController extends Controller
         }
 
         $currentTask->update($validated);
-
+        event(new UpdatedTaskEvent($currentTask));
 
 
         return redirect()->route('tasks.index')->with('success', 'Tâche mise à jour avec succès.');
@@ -88,9 +93,9 @@ class TaskController extends Controller
     // Supprime une tâche
     public function destroy($id)
     {
-
         $currentTask = Task::find($id);
         $currentTask->delete();
+        event(new DeletedTaskEvent($currentTask));
         return redirect()->route('tasks.index')->with('success', 'Tâche supprimée avec succès.');
     }
 }
